@@ -1,5 +1,6 @@
 import express from 'express';
 import session from "express-session";
+import mongoose from "mongoose";
 import "dotenv/config";
 
 import Hello from "./Hello.js"
@@ -9,6 +10,9 @@ import UserRoutes from './Kambaz/Users/routes.js';
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 import ModuleRoutes from './Kambaz/Modules/router.js';
 import AssignmentRoutes from './Kambaz/Assignments/router.js';
+
+const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
+mongoose.connect(CONNECTION_STRING);
 
 const app = express()
 app.use(
